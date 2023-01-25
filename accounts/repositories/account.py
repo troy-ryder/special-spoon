@@ -40,3 +40,29 @@ class AccountRepo():
                     SELECT ID, AccountNumber, CustomerID, CurrentBalance FROM account
                 """)
                 rows = cursor.fetchall()
+        for row in rows:
+            results.append(Account.construct(id=row[0], number=row[1], customer=Customer.construct(id=row[2]), balance=round(row[3], 2)))
+        return results
+    
+    def update(self, account: Account) -> None:
+        with psychopg2.connect() as db:
+            with db.cursor() as cursor:
+                cursor.execute("""
+                    UPDATE account
+                        SET AccountNumber=%(account_number)s, CustomerID=%(customer_id)s, CurrentBalance=%(currentBalance)s) 
+                            WHERE ID=%(id)s
+                """, {
+                    'id': account.id,
+                    'account_number': account.number,
+                    'customer_id': account.customer_id,
+                    'currentBalance': account.balance
+                })
+
+    def delete(self, id) -> None:
+        with psychopg2.connect() as db:
+            with db.cursor() as cursor:
+                cursor.execute("""
+                    DELETE FROM account WHERE ID=%(account_id)s
+                """, {
+                    'account_id': id
+                })
