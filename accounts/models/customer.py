@@ -5,7 +5,7 @@ class Customer(BaseModel):
     id: int
     first_name: str
     last_name: str
-    address: Address.id
+    address: Address
     email: str
     
     

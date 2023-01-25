@@ -6,6 +6,6 @@ from accounts.models.customer import Customer
 class Account(BaseModel):
     id: int
     number: str
-    id: Customer.id
+    customer_id: Customer
     balance: float
 
