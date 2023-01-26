@@ -1,5 +1,5 @@
 from ssl import ALERT_DESCRIPTION_CERTIFICATE_UNOBTAINABLE
-import psychopg2
+import psycopg2
 from accounts.models.account import Account
 from accounts.models.customer import Customer
 

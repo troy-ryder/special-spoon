@@ -1,5 +1,5 @@
 from audioop import add
-import psychopg2
+import psycopg2
 from accounts.models.address import Address
 
 class AddressRepo():

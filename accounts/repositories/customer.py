@@ -1,4 +1,4 @@
-import psychopg2
+import psycopg2
 from accounts.models.customer import Customer
 from accounts.models.address import Address
 

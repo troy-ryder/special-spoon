@@ -12,7 +12,7 @@ app = FastAPI()
 addressRepo = AddressRepo()
 customerRepo = CustomerRepo()
 accountRepo = AccountRepo()
-accountService = AccountService()
+accountService = AccountService(addressRepo, customerRepo, accountRepo)
 
 @app.post('/api/accounts')
 async def open_account(account: Account) -> Account:
